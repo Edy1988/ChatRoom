@@ -1,5 +1,7 @@
 package edu.udacity.java.nano.chat;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * WebSocket message model
  */
@@ -19,6 +21,10 @@ public class Message {
 		this.username = username;
 		this.message = message;
 		this.onlineCount = onlineCount;
+	}
+
+	public static String json(String type, String username, String message, int onlineCount){
+		return JSON.toJSONString(new Message(type, username, message, onlineCount));
 	}
 
 	public void setType(String type) {
