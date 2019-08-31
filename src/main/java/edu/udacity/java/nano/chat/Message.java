@@ -58,15 +58,6 @@ public class Message {
 	public int getOnlineCount() {
 		return onlineCount;
 	}
-	public String getENTER(){
-		return ENTER;
-	}
 
-	public String getSpeak(){
-		return SPEAK;
-	}
 
-	public String getQuit(){
-		return QUIT;
-	}
 }
