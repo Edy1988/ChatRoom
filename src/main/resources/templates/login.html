@@ -107,7 +107,15 @@
             padding: 15px;
             margin-top: 20px;
             display: block;
-            color: #FFFFFF
+            color: #FFFFFF;
+            width:100%;
+            outline:none;
+            border:none;
+            cursor:pointer;
+        }
+
+        .submit:hover, .submit:focus {
+            color: #34495e;
         }
 
         .act-but {
@@ -133,37 +141,15 @@
 <body>
 <div class="logo_box">
     <h3>Chat Room</h3>
-    <form>
+    <form action="/index">
         <div class="input_outer">
             <span class="u_user"></span>
             <input id="username" name="username" class="text" type="text" placeholder="Username">
         </div>
         <div class="mb2">
-            <a class="act-but submit" onclick="login()">Login</a>
+            <input class="act-but submit" type="submit" value="Login">
         </div>
     </form>
 </div>
-
-<script>
-
-    /**
-     * Login
-     */
-    function login() {
-        // TODO: complete the login function
-    }
-
-    /**
-     * Enter to login.
-     */
-    document.onkeydown = function (event) {
-        var e = event || window.event || arguments.callee.caller.arguments[0];
-        e.keyCode === 13 && login();
-    };
-
-
-</script>
-
-
 </body>
 </html>
