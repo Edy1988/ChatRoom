@@ -8,8 +8,8 @@ import com.alibaba.fastjson.JSON;
 public class Message {
 
 	public static final String ENTER = "ENTER";
-	public static final String CHAT = "CHAT";
-	public static final String LEAVE = "LEAVE";
+	public static final String SPEAK = "SPEAK";
+	public static final String QUIT = "QUIT";
 	private String type;
 	private String username;
 	private String message;
@@ -23,7 +23,7 @@ public class Message {
 		this.onlineCount = onlineCount;
 	}
 
-	public static String jsonConverter(String type, String username, String message, int onlineCount){
+	public static String jsonConverter(String type, String username, String message, int onlineCount) {
 		return JSON.toJSONString(new Message(type, username, message, onlineCount));
 	}
 
@@ -59,14 +59,14 @@ public class Message {
 		return onlineCount;
 	}
 	public String getENTER(){
-		return "ENTER";
+		return ENTER;
 	}
 
-	public String getChat(){
-		return "CHAT";
+	public String getSpeak(){
+		return SPEAK;
 	}
 
-	public String getLeave(){
-		return "LEAVE";
+	public String getQuit(){
+		return QUIT;
 	}
 }
