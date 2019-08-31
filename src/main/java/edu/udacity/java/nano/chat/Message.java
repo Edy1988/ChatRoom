@@ -23,7 +23,7 @@ public class Message {
 		this.onlineCount = onlineCount;
 	}
 
-	public static String json(String type, String username, String message, int onlineCount){
+	public static String jsonConverter(String type, String username, String message, int onlineCount){
 		return JSON.toJSONString(new Message(type, username, message, onlineCount));
 	}
 
