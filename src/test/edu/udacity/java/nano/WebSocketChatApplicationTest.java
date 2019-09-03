@@ -14,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest(WebSocketChatApplication.class)
+
 public class WebSocketChatApplicationTest {
 
 	@Autowired
@@ -23,5 +24,11 @@ public class WebSocketChatApplicationTest {
 	public void shouldDisplayLoginScreen() throws Exception {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk())
 				.andExpect(content().string(containsString("Chat Room")));
+	}
+
+	@Test
+	public void shouldDisplayChatPage() throws Exception {
+		this.mockMvc.perform(get("/index?")).andExpect(status().isOk())
+				.andExpect(content().string(containsString("Welcome")));
 	}
 }
