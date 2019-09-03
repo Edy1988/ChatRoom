@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -29,6 +30,7 @@ public class WebSocketChatApplicationTest {
 	@Test
 	public void shouldDisplayChatPage() throws Exception {
 		this.mockMvc.perform(get("/index?")).andExpect(status().isOk())
-				.andExpect(content().string(containsString("Welcome")));
+				.andExpect(content().string(containsString("Welcome")))
+				.andExpect(content().string(containsString("Content")));
 	}
 }
