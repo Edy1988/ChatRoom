@@ -1,6 +1,5 @@
 package edu.udacity.java.nano;
 
-import edu.udacity.java.nano.chat.Message;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -19,20 +17,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class WebSocketChatApplicationTest {
 
 	@Autowired
-	public MockMvc mockMvc;
+	private MockMvc mockMvc;
 
 	@Test
 	public void shouldDisplayLoginScreen() throws Exception {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk())
 				.andExpect(content().string(containsString("Chat Room")))
-		        .andExpect(view().name("login"));
+				.andExpect(view().name("login"));
 	}
-
 
 	@Test
 	public void shouldDisplayChatPage() throws Exception {
 		this.mockMvc.perform(get("/index?")).andExpect(status().isOk())
 				.andExpect(content().string(containsString("Welcome")))
-				.andExpect(content().string(containsString("Content")));
+				.andExpect(view().name("chat"));
 	}
 }
