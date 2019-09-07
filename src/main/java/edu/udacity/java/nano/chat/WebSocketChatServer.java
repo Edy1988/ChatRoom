@@ -23,7 +23,7 @@ public class WebSocketChatServer {
     private static Map<String, Session> onlineSessions = new ConcurrentHashMap<>();
 
     private static void sendMessageToAll(String message) {
-        onlineSessions.forEach((id, session) ->{
+        onlineSessions.forEach((id, session) -> {
             try {
                 session.getBasicRemote().sendText(message);
             } catch (IOException e) {
@@ -34,13 +34,15 @@ public class WebSocketChatServer {
 
     @OnOpen
     public void onOpen(Session session) {
+    	if(onlineSessions.containsKey(session.getId())) { return; }
+
         onlineSessions.put(session.getId(), session);
         sendMessageToAll(Message.jsonConverter("ENTER", "", "", onlineSessions.size()));
     }
 
     @OnMessage
-    public void onMessage(Session session, String jsonConverter) {
-        Message message = (Message) JSON.parseObject(jsonConverter, Message.class);
+    public void onMessage(Session session, String jsonString) {
+        Message message = JSON.parseObject(jsonString, Message.class);
         sendMessageToAll(Message.jsonConverter("SPEAK", message.getUsername(), message.getMessage(), onlineSessions.size()));
     }
 
